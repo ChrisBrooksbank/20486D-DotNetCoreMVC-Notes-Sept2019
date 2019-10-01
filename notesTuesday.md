@@ -132,9 +132,87 @@ Render with <vc:My> or @await Component.InvokeAsync("My",5)
 
 Advice is to avoid these ?
 
+##Members
+Uses ViewComponents and tag helpers.
 
+##Models
+**@Html.@EditorForModel()** e.g. checkbox for boolean property
+Can create and register template ( razor view ) which target specified model
+
+```c#
+@model ModelNamespace.Person
+ 
+<form action="/Person/GetName" method="post">
+    @Html.EditorForModel()
+    <input type="submit" value="Submit my name" />
+</form>
+```
+
+use attributes to affect rendering by @Html.EditorForModel() : 
+
+```c#
+public class Person
+{
+    [Display(Name="My Name")]
+    public string Name { get; set; }
+ 
+    [DataType(DataType.Password)]
+    public string Password { get; set; }
+ 
+    [DataType(DataType.Date)]
+    public DateTime Birthdate { get; set; }
+ 
+    [Display(Name="Email Address")]
+    public string EmailAddress { get; set; }
+ 
+    [DataType(DataType.MultilineText)]
+    public string Description { get; set; }
+}
+```
+
+more helpers : 
+* @Html.DisplayNameFor(model => model.FirstName)
+* @Html.LabelFor( model => model.Contact )
+( or taghelpers :  <label asp-for="ContactMe"></label>)
+* @using ( Html.BeginForm("ShowDetails", "Person") )
+* 
+
+
+ModelBindersCollection can have your custom model binder added.
+
+##validation ( serverside )
+
+```c#
+public class Person
+{
+    [Display(Name = "My Name")]
+    [Required(ErrorMessage = "Please enter a name.")]
+    public string Name { get; set; }
+ 
+    [Range(0, 150)]
+    public int Age { get; set; }
+ 
+    [Required]
+    [RegularExpression(".+\\@.+\\..+")]
+    public string EmailAddress { get; set; }
+ 
+    [DataType(DataType.MultilineText)]
+    [StringLength(20)]
+    public string Description { get; set; }
+}
+```
+
+To render : 
+@Html.ValidationSummary()
+or @Html.ValidationMessageFor(model => model.Name)
+
+###CustomValidators
+inherit from ValidationAttribute, override IsValid()
 
 ##tip : 
 Alt-F12 Peek Definition
 
 Can inject IHostingEnvironment into controllers
+
+[tag helpers list](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/built-in/?view=aspnetcore-3.0)
+
