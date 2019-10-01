@@ -88,6 +88,52 @@ Given a LogActionFilterAttribute
 ##Views
 @model WebApplication.Models.Car : gives intellisense
 
+Always use helper methods to generate urls, so they update as routes do, dynamically
+
+Razor view engine
+@ identifys server side code
+You can escape an @ with another @. @@
+use @: to explicitly define line as content not code
+@() wraps code to avoid confusion
+
+You can inject a service into a view using the @inject directive
+But prob not good design unless just reformatting ??
+
+###html helpers
+```c#
+@Html.ActionLink(text, method, new { id = 1 } ); // generates the anchor tab
+@Url.Action(); // just generates path
+
+```
+
+###tag helpers
+They look like attributes of html, not code, need enabling
+```html
+<a asp-action="AnotherAction" asp-route-employeename="@currentname">Press me</a>
+```
+
+###partial views
+convention is that filename starts with an underscore, and is in views\shared folder.
+
+```#chtml
+@model Models.SimpleModel
+ 
+@await Html.PartialAsync("_MyPartialView")
+Value received in index view from model is @Model.Value
+@await Html.PartialAsync("_MyPartialView")
+```
+
+##View Components
+Has a public non abstract class, normally derived from ViewComponent, implements InvokeAsync
+
+And a view ( in views\shared\components )
+
+Render with <vc:My> or @await Component.InvokeAsync("My",5)
+
+Advice is to avoid these ?
+
+
+
 ##tip : 
 Alt-F12 Peek Definition
 
