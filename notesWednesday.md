@@ -261,3 +261,111 @@ return View(cupcakeToUpdate);
 }
 ```
 
+#package-lock.json
+https://docs.npmjs.com/files/package-locks
+your dependancies have dependencies, normally run "npm shrinkwrap"
+
+override useStaticFiles to use Node_Modules, otherwise not picked up
+
+```c#
+app.UseNodeModules(env.ContentRootPath) // extension method created in lab
+```
+
+#Client Side Validation
+MS supports JQuery.Validate
+asp-validation-for // tag-helper
+
+#Client Side Development ( Module 9 )
+
+##BootStrap
+
+##Sass
+
+```sass
+/* Define a mixin */
+@mixin normalized-text() {
+  font-weight: 300;
+  line-height: 1.2;
+}
+ 
+/* Use a Mixin in multiple places */
+.description {
+  @include normalized-text();
+  color: red;
+}
+.comment {
+  @include normalized-text();
+  color: grey;
+}
+```
+
+##Task Runners
+Tasks can be chained. 
+e.g. tasks : build, clean ...
+
+###Grunt
+Gruntfile.js
+
+```js
+module.exports = function(grunt) {
+    grunt.initConfig({
+        sass: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: 'Styles',
+                    src: ['**/*.scss'],
+                    dest: 'wwwroot/styles',
+                    ext: '.css'
+                }]
+            }
+        }
+    });    
+};
+```
+
+###Gulp
+
+running "gulp tasks", shows you all tasks and which tasks each one of those runs, i.e. hierachy
+
+
+```js
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+ 
+var paths = {
+    webroot: "./wwwroot/"
+};
+ 
+paths.sass = "./Styles/*.scss";
+paths.compiledCss = paths.webroot + "styles/";
+ 
+gulp.task("sass", function() {
+    return gulp.src(paths.sass)
+        .pipe(sass().on('error', sass.logError)) 
+        .pipe(gulp.dest(paths.compiledCss));
+});    
+```
+* Visual Studio has "task runner explorer"
+* can add "gulp sass" as a pre-build event in visual studio
+
+
+##Bundling.
+Reduce number of requests required by browser to render the web page.
+
+##Minification
+Reduces whitespace and shortens variable names
+gulp-cssmin
+gulp-uglify
+
+gulp.watch() // monitor folders for changes.
+
+##Responsive design
+
+ViewPort
+
+@media queries
+
+##Flexbox Layout
+
+Lab !
