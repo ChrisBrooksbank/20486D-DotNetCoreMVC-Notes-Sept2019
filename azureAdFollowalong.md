@@ -1,9 +1,12 @@
 #Thursday, security module
+following along : create a core website using Azure active directory
 
-logged onto portal.azure.com as chrismvc@outlook.com ( incognito )
+##log onto portal.azure.com as chrismvc@outlook.com ( incognito )
 Click "Azure AD"
 Click : "Overview"
-mine said : chrismvcoutlookcom.onmicrosoft.com
+note the domain, e.g. : chrismvcoutlookcom.onmicrosoft.com
+
+##In Microsoft Visual Studio :
 
 new asp.net core web application 
 Project Name = DemoADSecurity
@@ -19,10 +22,9 @@ trust IIS express cert ? YES
 
 running 
 
-url = contains clientid
+note url = contains clientid
 
-Now
-
+##Back to azure portal
 I can now see my app on Azure portal
 Click "Default Directory", "App registrations"
 
@@ -50,6 +52,9 @@ https://chrismvcoutlookcom.onmicrosoft.com/DemoADSecurity
 Managed application in local directory
 DemoADSecurity
 
----
+Theres "View API Permissions" button
 
-Theres "View API Permissions"
+##Back in running website
+
+Header of my core website says :
+Hello live.com#chrismvc@outlook.com
