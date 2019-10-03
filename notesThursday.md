@@ -63,6 +63,34 @@ public class MyExceptionFilter : ExceptionFilterAttribute
 
 Can add attribute to controller action, or to global collection in startup.cs
 
+#Managing Security
+
+Two Factor Authentication, easy to setup on Azure AD
+
+IdentityClass inheriting from IdentityUser and add attributes to it.
+Requires IdentityDBContext for all database communications.
+Requires call to AddDefaultIdentity in ConfigureServices
+Requires call to UseAuthentication in Configure
+
+AddDefaultIdentity
+
+```c#
+services.AddDefaultIdentity<WebsiteUser>(options =>
+            {
+                options.Password.RequiredLength = 10;
+                options.Password.RequiredUniqueChars = 3;
+                options.Password.RequireDigit = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireLowercase = false;
+            })
+                .AddEntityFrameworkStores<AuthenticationContext>();
+```
+
+Using razor class library, so you wont see views, just need to create AccountController with a couple of endpoints.
+
+Database created with user, roles and claims tables.
+
 
 
 
