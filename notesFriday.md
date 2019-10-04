@@ -145,10 +145,70 @@ public class HomeController : Controller
 
 [httpClientFactory](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)
 
-MSPaint
+#MSPaint!
 
+[DefaultValue] in your models in case not returned from API
 
+#Hosting and Deployment
 
+Azure sales pitch !!
 
+#Kestrel
+Kestrel is a cross-platform web server for ASP.NET Core. 
 
+Kestrel is the web server that's included by default in ASP.NET Core project templates.
+
+#HTTP.sys 
+is a web server for ASP.NET Core that only runs on Windows. HTTP.sys is an alternative to Kestrel server and offers some features that Kestrel doesn't provide. Important. HTTP.sys isn't compatible with the ASP.NET Core Module and can't be used with IIS or IIS Express
+
+To use this edit program.cs
+
+Butterfly app
+
+1.Create "Publish"ing profile.
+(Can create environment in Azure and download XML locally instead)
+
+Can choose to package with runtime environment if server doesnt have it
+
+Serverless hosting. Create a Web App container in Azure, from marketplace.
+
+Host code or docker. Can be PHP or.....
+
+https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/
+
+Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support, and tools are widely available.
+
+The name Kubernetes originates from Greek, meaning helmsman or pilot. Google open-sourced the Kubernetes project in 2014. Kubernetes builds upon a decade and a half of experience that Google has with running production workloads at scale, combined with best-of-breed ideas and practices from the community.
+
+Choose plan, £££, traffic manager, 
+
+Paul Cabrelli deploying to : http://qafriday.azurewebsites.net
+Hey, App Service developers!
+Your app service is up and running.
+Time to take the next step and deploy your code.
+
+Deployment Slots
+Create a deployment slot called dev, which has own url
+http://qafriday-dev.azurewebsites.net/
+
+Deploy here, when happy deploy to production slot
+
+Create App Service - lots of questions, error prone
+So instead download a publish profile "Get Publish Profile"
+Save and put in local project folder
+In VS, import profile
+Deploy
+
+If creating custom domain, need to do more
+"Add Custom Domain"
+
+Deployed as debug code, so can debug it from local VS
+Can override app settings in azure portal.
+
+use Visual Studio Cloud Explorer
+App Services
+QAFriday
+Drill into deployment slot
+Right click, attach debugger
+BUT In Azure Portal, need to edit configuration and turn remote debugging checkbox on
 
