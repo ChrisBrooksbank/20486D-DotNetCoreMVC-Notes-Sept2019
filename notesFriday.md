@@ -70,7 +70,7 @@ public class HomeController
 [open API specification](https://swagger.io/specification/)
 
 Swagger. 
-Can then use NSwageStudio to generate C# client from the swagger.
+Can then use NSwag to generate C# client from the swagger.
 SwashBuckle
 
 ```c#
@@ -211,4 +211,52 @@ QAFriday
 Drill into deployment slot
 Right click, attach debugger
 BUT In Azure Portal, need to edit configuration and turn remote debugging checkbox on
+
+when debugged, dev slot, open Azure portal
+select deployment Slots swap
+Doesnt physically move things, just changes routing
+
+Transformation files - configuration editor in VS
+
+PAAS (platform as a service) ( less to configure )
+, IAAS ( infrastructure as a service )
+
+auto scaling : Scale out rules on portal, when CPU > 70 add more...
+
+Azure App Service is PAAS
+
+Resources in Azure are associated with resource groups
+
+Application Insights - database of telemetry information
+livestream dashboard - so can see when things going wrong, e.g. request failure rate
+
+paul.cabrelli@qa.com
+
+#Microsoft Azure Storage
+* Blobs (stored in named containers)
+* File shares
+* Queue storage
+* Table storage ( NOSQL )
+
+* SQL Azure
+* Redis
+* Azure functions, e.g. trigger code when something appears in a database table, or blob or queue. Inputs, outputs, what triggers. Can create API's using this. Where trigger
+* ServiceBus - create relay endpoints, e.g. code on Azure, database onPrem, secure link.
+* Web jobs => avoid => precursor to function apps
+* Azure Content Delivery Network ( CDN ), url resolves to IP address based on requesters location ( resource on edge servers across planet )
+* Azure Key Vault to securly store secrets. (give devs dev keyvault url, not prod !)
+
+final lab.....
+
+
+
+
+
+
+
+
+
+
+
+
 
